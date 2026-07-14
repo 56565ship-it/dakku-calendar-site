@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dakku Calendar — 다이어리처럼 꾸미는 캘린더</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EC;
+    --paper-line:#E4D9C4;
+    --ink:#33302A;
+    --lavender:#B7A6E0;
+    --mint:#8FC9B4;
+    --coral:#F0977C;
+    --gold:#E0B24A;
+    --sticker-shadow: rgba(51,48,42,0.18);
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--paper-line) 1px, transparent 1px);
+    background-size: 100% 2.1em;
+    background-color:var(--paper);
+    color:var(--ink);
+    font-family:'Nanum Gothic', sans-serif;
+    line-height:1.7;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  /* washi tape */
+  .tape{
+    position:absolute;
+    height:34px;
+    opacity:0.85;
+    background:repeating-linear-gradient(135deg, var(--mint), var(--mint) 8px, #ffffff55 8px, #ffffff55 16px);
+    box-shadow:0 2px 4px var(--sticker-shadow);
+  }
+
+  header{
+    position:relative;
+    padding:90px 0 60px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .tape.t1{width:150px;top:36px;left:8%;transform:rotate(-8deg);}
+  .tape.t2{width:120px;top:20px;right:10%;transform:rotate(11deg);background:repeating-linear-gradient(135deg, var(--coral), var(--coral) 8px, #ffffff55 8px, #ffffff55 16px);}
+
+  .eyebrow{
+    display:inline-block;
+    font-family:'Gaegu', cursive;
+    font-size:1.15rem;
+    color:var(--coral);
+    background:#fff;
+    border:2px dashed var(--coral);
+    border-radius:999px;
+    padding:4px 18px;
+    transform:rotate(-2deg);
+    margin-bottom:22px;
+  }
+  h1{
+    font-family:'Gaegu', cursive;
+    font-weight:700;
+    font-size:clamp(2.6rem, 6vw, 4.2rem);
+    margin:0 0 14px;
+    color:var(--ink);
+  }
+  h1 span{color:var(--lavender);}
+  .sub{
+    font-size:1.15rem;
+    max-width:520px;
+    margin:0 auto;
+    color:#5c584f;
+  }
+
+  /* sticker sheet — signature element */
+  .sticker-sheet{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:18px;
+    margin:44px 0 10px;
+  }
+  .sticker{
+    width:104px;
+    height:104px;
+    border-radius:50%;
+    background:#fff;
+    border:3px solid var(--ink);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    box-shadow:3px 4px 0 var(--sticker-shadow);
+    font-family:'Gaegu', cursive;
+    font-size:0.95rem;
+    text-align:center;
+    transition:transform .2s ease;
+  }
+  .sticker:hover{transform:translateY(-4px) rotate(-3deg);}
+  .sticker .emoji{font-size:1.8rem;margin-bottom:2px;}
+  .sticker:nth-child(1){transform:rotate(-6deg);}
+  .sticker:nth-child(2){transform:rotate(4deg);}
+  .sticker:nth-child(3){transform:rotate(-3deg);}
+  .sticker:nth-child(4){transform:rotate(7deg);}
+  .sticker:nth-child(5){transform:rotate(-8deg);}
+
+  section{padding:56px 0;}
+  .divider{
+    border:none;
+    border-top:2px dotted var(--paper-line);
+    margin:0;
+  }
+
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:26px;
+    margin-top:32px;
+  }
+  .card{
+    background:#fffdf8;
+    border:1.5px solid var(--paper-line);
+    border-radius:var(--radius);
+    padding:24px 22px;
+    position:relative;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:-10px; left:20px;
+    width:44px; height:20px;
+    background:var(--gold);
+    opacity:0.75;
+    transform:rotate(-4deg);
+  }
+  .card h3{
+    font-family:'Gaegu', cursive;
+    font-size:1.4rem;
+    margin:6px 0 8px;
+  }
+  .card p{margin:0;color:#5c584f;font-size:0.98rem;}
+
+  h2.section-title{
+    font-family:'Gaegu', cursive;
+    font-size:2rem;
+    text-align:center;
+    margin-bottom:4px;
+  }
+  .section-note{text-align:center;color:#8a8477;font-size:0.95rem;margin-bottom:0;}
+
+  .gcal-box{
+    margin-top:36px;
+    background:#fff;
+    border:2px dashed var(--lavender);
+    border-radius:var(--radius);
+    padding:28px 26px;
+  }
+  .gcal-box h3{
+    font-family:'Gaegu', cursive;
+    font-size:1.3rem;
+    margin-top:0;
+  }
+  .gcal-box ul{margin:10px 0 0; padding-left:20px; color:#5c584f;}
+  .gcal-box li{margin-bottom:6px;}
+
+  footer{
+    padding:50px 0 70px;
+    text-align:center;
+    font-size:0.9rem;
+    color:#8a8477;
+  }
+  footer a{color:var(--coral); text-decoration:none; border-bottom:1px solid var(--coral);}
+  footer a:hover{color:var(--ink); border-color:var(--ink);}
+
+  .pin{
+    display:inline-block;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:var(--coral);
+    box-shadow:0 1px 2px var(--sticker-shadow);
+    margin:0 8px;
+    vertical-align:middle;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .sticker{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="tape t1"></div>
+  <div class="tape t2"></div>
+  <span class="eyebrow">✎ 오늘의 다이어리</span>
+  <h1>다이어리처럼 꾸미는<br><span>Dakku</span> Calendar</h1>
+  <p class="sub">스티커를 붙이고, 배너를 걸고, 하루를 기록하듯 일정을 관리하세요.<br>구글 캘린더와 자연스럽게 연동되는 나만의 데스크톱 다꾸 캘린더예요.</p>
+
+  <div class="sticker-sheet">
+    <div class="sticker"><span class="emoji">🗓️</span>일정</div>
+    <div class="sticker"><span class="emoji">📔</span>일기</div>
+    <div class="sticker"><span class="emoji">✅</span>할일</div>
+    <div class="sticker"><span class="emoji">🎀</span>스티커</div>
+    <div class="sticker"><span class="emoji">🔁</span>루틴</div>
+  </div>
+</header>
+
+<hr class="divider">
+
+<section class="wrap">
+  <h2 class="section-title">이런 걸 할 수 있어요<span class="pin"></span></h2>
+  <p class="section-note">캘린더 하나에 기록과 꾸미기를 모두 담았어요</p>
+
+  <div class="feature-grid">
+    <div class="card">
+      <h3>일정 & 할 일</h3>
+      <p>날짜별 할 일을 정리하고, 구글 캘린더 일정도 함께 확인하고 만들 수 있어요.</p>
+    </div>
+    <div class="card">
+      <h3>다이어리</h3>
+      <p>하루의 기분과 기록을 짧은 일기로 남겨보세요.</p>
+    </div>
+    <div class="card">
+      <h3>스티커 & 배너</h3>
+      <p>화면을 나만의 스타일로 꾸미는 스티커와 상단 배너 기능.</p>
+    </div>
+    <div class="card">
+      <h3>루틴</h3>
+      <p>반복되는 하루 루틴을 체크하며 습관을 관리해요.</p>
+    </div>
+    <div class="card">
+      <h3>엑셀로 일정 가져오기</h3>
+      <p>엑셀 표로 정리된 일정을 한 번에 캘린더로 옮겨올 수 있어요.</p>
+    </div>
+    <div class="card">
+      <h3>시간 사용 트래킹</h3>
+      <p>사용자가 켜고 끌 수 있는 선택 기능으로, 활성 프로그램 사용 시간을 로컬에서만 기록해요.</p>
+    </div>
+  </div>
+
+  <div class="gcal-box">
+    <h3>🔗 구글 캘린더 연동</h3>
+    <ul>
+      <li>내 구글 계정으로 로그인하면 Dakku Calendar 전용 캘린더가 만들어져요.</li>
+      <li>앱에서 만든 일정이 구글 캘린더에 그대로 반영돼요.</li>
+      <li>연동 해제는 앱 설정에서 언제든 가능해요.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<footer class="wrap">
+  <p>Dakku Calendar는 Windows 데스크톱 애플리케이션입니다.</p>
+  <p><a href="privacy.html">개인정보처리방침</a> &nbsp;·&nbsp; 문의: <a href="mailto:contact@example.com">contact@example.com</a></p>
+</footer>
+
+</body>
+</html>

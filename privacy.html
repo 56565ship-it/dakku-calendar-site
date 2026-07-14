@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 — Dakku Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EC;
+    --paper-line:#E4D9C4;
+    --ink:#33302A;
+    --lavender:#B7A6E0;
+    --mint:#8FC9B4;
+    --coral:#F0977C;
+    --gold:#E0B24A;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background-color:var(--paper);
+    color:var(--ink);
+    font-family:'Nanum Gothic', sans-serif;
+    line-height:1.75;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px 90px;}
+  header{
+    padding:70px 0 30px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-family:'Gaegu', cursive;
+    font-size:1.1rem;
+    color:var(--lavender);
+    background:#fff;
+    border:2px dashed var(--lavender);
+    border-radius:999px;
+    padding:4px 18px;
+    transform:rotate(-2deg);
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:'Gaegu', cursive;
+    font-size:clamp(2rem,5vw,2.8rem);
+    margin:0 0 8px;
+  }
+  .updated{color:#8a8477;font-size:0.92rem;}
+
+  .lang-tab{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:28px 0 8px;
+  }
+  .lang-tab button{
+    font-family:'Nanum Gothic',sans-serif;
+    font-weight:800;
+    font-size:0.9rem;
+    border:2px solid var(--ink);
+    background:#fff;
+    border-radius:999px;
+    padding:6px 18px;
+    cursor:pointer;
+  }
+  .lang-tab button.active{background:var(--ink);color:#fff;}
+
+  section.doc{
+    background:#fffdf8;
+    border:1.5px solid var(--paper-line);
+    border-radius:16px;
+    padding:36px 34px;
+    margin-top:24px;
+  }
+  h2{
+    font-family:'Gaegu', cursive;
+    font-size:1.5rem;
+    margin:34px 0 10px;
+    color:var(--ink);
+  }
+  h2:first-child{margin-top:0;}
+  h2 .n{color:var(--coral);margin-right:6px;}
+  p{margin:0 0 12px;color:#4a463d;}
+  ul{margin:0 0 12px;padding-left:22px;color:#4a463d;}
+  li{margin-bottom:6px;}
+  strong{color:var(--ink);}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.93rem;}
+  th,td{border:1px solid var(--paper-line);padding:8px 10px;text-align:left;vertical-align:top;}
+  th{background:#f3ecdd;font-family:'Nanum Gothic';}
+
+  .lang-block[hidden]{display:none;}
+
+  footer{
+    text-align:center;
+    margin-top:40px;
+    font-size:0.9rem;
+  }
+  footer a{color:var(--coral); text-decoration:none; border-bottom:1px solid var(--coral);}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <span class="eyebrow">🔒 Privacy Policy</span>
+  <h1>개인정보처리방침</h1>
+  <p class="updated">최종 수정일 · Last updated: 2026-07-14</p>
+
+  <div class="lang-tab">
+    <button id="btn-ko" class="active" onclick="showLang('ko')">한국어</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+</header>
+
+<div class="wrap">
+<section class="doc">
+
+  <!-- ===================== KOREAN ===================== -->
+  <div class="lang-block" id="lang-ko">
+
+    <h2><span class="n">1.</span>개요</h2>
+    <p>Dakku Calendar(이하 '앱')는 Windows 데스크톱 애플리케이션으로, 일정 관리, 할 일, 일기, 스티커 꾸미기, 루틴 체크 등을 제공합니다. 본 방침은 앱이 어떤 정보를 수집·이용·저장하는지 설명합니다.</p>
+
+    <h2><span class="n">2.</span>수집하는 정보와 저장 위치</h2>
+    <table>
+      <tr><th>기능</th><th>수집 정보</th><th>저장 위치</th></tr>
+      <tr><td>할 일 / 루틴 / 일기 / 스티커 / 배너</td><td>사용자가 직접 입력한 텍스트, 이미지</td><td>사용자 기기 로컬 저장소 (외부 서버 전송 없음)</td></tr>
+      <tr><td>구글 캘린더 연동</td><td>구글 계정 인증 토큰, 캘린더 일정(제목·시간·설명)</td><td>OAuth 토큰은 로컬 기기에 저장. 일정 데이터는 사용자의 구글 계정과 앱 간에만 동기화</td></tr>
+      <tr><td>엑셀 일정 업로드</td><td>사용자가 선택한 엑셀 파일 내 일정 정보</td><td>로컬에서 처리 후 구글 캘린더로 전송(사용자 동의 시)</td></tr>
+      <tr><td>활동(사용 시간) 트래킹</td><td>활성 프로그램/창 제목 (선택 기능, 사용자가 켜고 끌 수 있음)</td><td>로컬 저장소, 외부 전송 없음</td></tr>
+    </table>
+
+    <h2><span class="n">3.</span>구글 사용자 데이터 이용 목적</h2>
+    <p>앱은 Google Calendar API를 사용하여 다음 기능을 제공합니다.</p>
+    <ul>
+      <li>사용자 전용 "Dakku Calendar" 캘린더 생성</li>
+      <li>앱에서 작성한 일정을 구글 캘린더에 생성·수정·삭제</li>
+      <li>구글 캘린더의 기존 일정을 앱 화면에 불러와 표시</li>
+    </ul>
+    <p>수집된 구글 캘린더 데이터는 <strong>위 기능 제공 목적 외에는 사용되지 않으며</strong>, 광고, 프로파일링, 제3자 판매 등에 이용되지 않습니다.</p>
+
+    <h2><span class="n">4.</span>제3자 제공 여부</h2>
+    <p>앱은 수집한 어떠한 개인정보도 제3자에게 판매하거나 제공하지 않습니다. 구글 캘린더 데이터는 사용자 본인의 구글 계정과 사용자 기기 사이에서만 동기화됩니다.</p>
+
+    <h2><span class="n">5.</span>데이터 보관 및 삭제</h2>
+    <p>로컬에 저장된 데이터는 앱을 삭제하거나 설정에서 초기화하면 함께 삭제됩니다. 구글 계정 연동은 앱 내 '연동 해제' 버튼 또는 <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">구글 계정 권한 설정</a>에서 언제든지 해제할 수 있으며, 해제 시 앱이 보유한 인증 토큰은 즉시 폐기됩니다.</p>
+
+    <h2><span class="n">6.</span>보안</h2>
+    <p>구글 인증 토큰은 사용자 기기 로컬 저장소에만 보관되며, 앱 서버는 별도로 존재하지 않습니다(모든 처리는 사용자 기기에서 이루어짐).</p>
+
+    <h2><span class="n">7.</span>아동의 개인정보</h2>
+    <p>본 앱은 만 14세 미만 아동을 대상으로 하지 않으며, 아동으로부터 고의로 개인정보를 수집하지 않습니다.</p>
+
+    <h2><span class="n">8.</span>변경 고지</h2>
+    <p>본 방침이 변경되는 경우 이 페이지를 통해 고지합니다.</p>
+
+    <h2><span class="n">9.</span>문의</h2>
+    <p>개인정보 관련 문의: <a href="mailto:contact@example.com">contact@example.com</a></p>
+  </div>
+
+  <!-- ===================== ENGLISH ===================== -->
+  <div class="lang-block" id="lang-en" hidden>
+
+    <h2><span class="n">1.</span>Overview</h2>
+    <p>Dakku Calendar ("the App") is a Windows desktop application offering schedule management, to-do lists, a diary, decorative stickers, and routine tracking. This policy explains what information the App collects, uses, and stores.</p>
+
+    <h2><span class="n">2.</span>Information Collected & Storage</h2>
+    <table>
+      <tr><th>Feature</th><th>Data Collected</th><th>Storage Location</th></tr>
+      <tr><td>To-dos / Routines / Diary / Stickers / Banner</td><td>Text and images entered by the user</td><td>Local storage on the user's device only (never transmitted to any external server)</td></tr>
+      <tr><td>Google Calendar Integration</td><td>Google account auth token; calendar event data (title, time, description)</td><td>OAuth token stored locally on device. Event data syncs only between the user's own Google account and the App</td></tr>
+      <tr><td>Excel schedule import</td><td>Schedule data from a user-selected Excel file</td><td>Processed locally, then sent to Google Calendar only with user consent</td></tr>
+      <tr><td>Activity (usage time) tracking</td><td>Active program / window title (optional feature, user can start/stop)</td><td>Local storage only, never transmitted</td></tr>
+    </table>
+
+    <h2><span class="n">3.</span>Use of Google User Data</h2>
+    <p>The App uses the Google Calendar API to:</p>
+    <ul>
+      <li>Create a dedicated "Dakku Calendar" calendar for the user</li>
+      <li>Create, update, and delete events on the user's Google Calendar based on in-app entries</li>
+      <li>Display the user's existing Google Calendar events within the App</li>
+    </ul>
+    <p>Google Calendar data is used <strong>solely for the purposes above</strong> and is never used for advertising, profiling, or sold to third parties.</p>
+
+    <h2><span class="n">4.</span>Third-Party Sharing</h2>
+    <p>The App does not sell or share any collected personal data with third parties. Google Calendar data is synced only between the user's own Google account and their own device.</p>
+
+    <h2><span class="n">5.</span>Data Retention & Deletion</h2>
+    <p>Locally stored data is removed when the user uninstalls the App or resets it from Settings. Google account access can be revoked at any time via the in-app "Disconnect" button or through <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account Permissions</a>; upon revocation, any stored auth token is immediately discarded.</p>
+
+    <h2><span class="n">6.</span>Security</h2>
+    <p>Google auth tokens are stored only in local storage on the user's device. The App does not operate a backend server — all processing happens on-device.</p>
+
+    <h2><span class="n">7.</span>Children's Privacy</h2>
+    <p>This App is not directed at children under 14, and does not knowingly collect personal information from children.</p>
+
+    <h2><span class="n">8.</span>Changes to This Policy</h2>
+    <p>Any changes to this policy will be posted on this page.</p>
+
+    <h2><span class="n">9.</span>Contact</h2>
+    <p>For privacy-related inquiries: <a href="mailto:contact@example.com">contact@example.com</a></p>
+  </div>
+
+</section>
+
+<footer>
+  <a href="index.html">← Dakku Calendar 소개로 돌아가기</a>
+</footer>
+</div>
+
+<script>
+function showLang(lang){
+  document.getElementById('lang-ko').hidden = lang !== 'ko';
+  document.getElementById('lang-en').hidden = lang !== 'en';
+  document.getElementById('btn-ko').classList.toggle('active', lang==='ko');
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+}
+</script>
+
+</body>
+</html>
